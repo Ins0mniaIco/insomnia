@@ -57,6 +57,8 @@
 		<p>Commands are prefixed with "Johnny".</p>
 		<h2>Johnny says:</h2>
 		<p id='johnny'></p>
+
+		<form id="avatarform" onsubmit="cleverbot.say();return false;" class=""><input name="stimulus" autocomplete="off" tabindex="1" class="stimulus" type="text" size="20" onkeyup="cleverbot.inputKeyUp()" placeholder="say to Evie..." onpaste="cleverbot.inputBeforePaste()" maxlength="200"><img id="actionsicon" src="/images/avatar/actions.png" onclick="cleverbot.toggleActions();"><div id="actionsbox"><p id="actionslines" onclick="cleverbot.toggleFullConversation()">Show more lines</p><p id="actionsnew" onclick="cleverbot.newConversation(true,true)" class="show">New conversation</p><p id="actionsfull" onclick="cleverbot.showConversationWindow()">Full conversation</p><p><label>Show avatar using</label><select onchange="cleverbot.changeMode(this)"><option value="2">Avatar images</option><option value="4" selected="selected">Existor Avatar Player</option></select></p><p><label for="actionsremember">Continue this conversation next visit</label><input id="actionsremember" type="checkbox" onchange="cleverbot.toggleRememberConversation(this)" checked="checked"></p></div><input name="sayitbutton" class="sayitbutton" type="button" value="say it" onclick="cleverbot.sendAI()"></form>
 	</body>
 </html>
 
