@@ -1,18 +1,71 @@
-<html>
-	<head>
-		<title>Svenni Dal's Speech-Bot</title>
-	</head>
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://unilogue.github.io/css/style.css">
+<script type="text/javascript" src="https://unilogue.github.io/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://unilogue.github.io/js/cleverbot/cleverbot.io.js"></script>
+</head>
 	<body>
-			<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-		<script src='/annyang.min.js'></script>
-		<script src='/cleverbot.io.min.js'></script>
-		<script src='/talking-console.js'></script>
+		
 		<script>
+$(document).ready(function() {
+
+var bot = new cleverbot("wpqRuy5AatSCD0Zi','O3nKgCEh1OyKar6uudJ9pM0cky4djkT3");
+
+
+
+bot.setNick("Insomnia")
+
+bot.create(function (err, session) {
+  // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
+
+  // Woo, you initialized cleverbot.io.  Insert further code here
+});
+
+$('#clever').keyup(function (e) {
+   if (e.keyCode == 13) {
+
+      var value = $(this).val();
+      var input = value;
+
+       if (value == input) {
+          document.getElementById("input").innerHTML =
+            bot.ask(input, function (err, response) {
+            console.log('me > ' + input);
+            console.log('cb > ' + response); // Will likely be: "Living in a lonely world"
+          });
+          $(this).val('');
+       }
+
+   }
+});
+
+$('html').keydown(function(e) {
+ if (e.which == 118) {
+    window.open('/', '_self');
+}
+});
+
+if (typeof console  != "undefined")
+  if (typeof console.log != 'undefined')
+    console.olog = console.log;
+else
+  console.olog = function() {};
+
+console.log = function(message) {
+  console.olog(message);
+  $('.console').append('<br>' + '<p>' + message + '</p>');
+};
+console.error = console.debug = console.info =  console.log
+});
 
 		var bot = new cleverbot('wpqRuy5AatSCD0Zi','O3nKgCEh1OyKar6uudJ9pM0cky4djkT3');
 		if (annyang) {
 			var commands = {
-				'johnny *command': function(command) {
+				'insomnia *command': function(command) {
 					bot.ask(command, function(err, response) {
 						if(err){
 							$('#johnny').text('Error!', err, 'Try again!');
@@ -38,27 +91,11 @@
 			annyang.start();
 		}
 		</script>
-		<h1>Svenni Dal's Speech-Bot.</h1>
-		<p>This project uses:</p>
-		<ul>
-			<li>
-				<a href='https://gist.github.com/sonictruth/7c2fea6d53818cbf92c24f81a722b9e2'>talking-console.js</a> from <a href='https://github.com/sonictruth'>sonictruth.</a>
-			</li>
-			<li>
-				<a href='https://github.com/TalAter/annyang'>annyang</a> from <a href='https://www.talater.com'>TalAter.</a>
-			</li>
-			<li>
-				<a href='https://cleverbot.io'>cleverbot</a> from <a href='https://cleverbot.io'>cleverbot.io</a>
-			</li>
-		</ul>
-		<p>Make sure to provide your own API user ID and API Key from cleverbot.io . Keep an console open because there are a lot of 400 errors for some reason.</p>
-		<hr>
-		<p>Say <strong>"Johnny, how are you?"</strong> and get an answer.</p>
-		<p>Commands are prefixed with "Johnny".</p>
-		<h2>Johnny says:</h2>
-		<p id='johnny'></p>
 
-		<form id="avatarform" onsubmit="cleverbot.say();return false;" class=""><input name="stimulus" autocomplete="off" tabindex="1" class="stimulus" type="text" size="20" onkeyup="cleverbot.inputKeyUp()" placeholder="say to Evie..." onpaste="cleverbot.inputBeforePaste()" maxlength="200"><img id="actionsicon" src="/images/avatar/actions.png" onclick="cleverbot.toggleActions();"><div id="actionsbox"><p id="actionslines" onclick="cleverbot.toggleFullConversation()">Show more lines</p><p id="actionsnew" onclick="cleverbot.newConversation(true,true)" class="show">New conversation</p><p id="actionsfull" onclick="cleverbot.showConversationWindow()">Full conversation</p><p><label>Show avatar using</label><select onchange="cleverbot.changeMode(this)"><option value="2">Avatar images</option><option value="4" selected="selected">Existor Avatar Player</option></select></p><p><label for="actionsremember">Continue this conversation next visit</label><input id="actionsremember" type="checkbox" onchange="cleverbot.toggleRememberConversation(this)" checked="checked"></p></div><input name="sayitbutton" class="sayitbutton" type="button" value="say it" onclick="cleverbot.sendAI()"></form>
+<div class="console"><div id="input" style="display:none;"></div></div>
+<p>me &#62;&nbsp;</p><input id="clever" type="text" placeholder="say something clever." spellcheck="false" />
+
+
 	</body>
 </html>
 
