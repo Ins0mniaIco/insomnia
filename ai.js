@@ -4,7 +4,7 @@ $(document).ready(function() {
     
     
     
-    bot.setNick("Insomnia-AI")
+    bot.setNick("Ins0mnia-web")
     
     bot.create(function (err, session) {
       // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
