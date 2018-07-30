@@ -1,99 +1,82 @@
 <!DOCTYPE html>
+        <html lang="en" class="no-js">
+            <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+                <title>Insomnia</title>
+                <meta name="description" content="We seek the truth" />
+                <meta name="keywords" content="material design, resume, responsive template, cv, multipurpose, portfolio, html5 template, themeforest.net, bootstrap, html5, creative, landing page, sass, clean, design, modern, angular js," />
+                <meta name="author" content="Insomnia"/>
+                
+                <link rel="shortcut icon" href="favicon.ico">
+                <link rel="icon" href="favicon.ico" type="image/x-icon">
+                <!--CSS-->
+                <link rel="stylesheet" type="text/css" href="css/style.css" />
+			<style>
+				.holder {margin-top:-150px;text-align:center;}
+				.holder p{font-size:1em;color:#fff;}
+				.holder span {font-weight:bold;color:#eabd6c;}
+			.ai-talk {height:350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+width: 350px;
+margin: 0 auto;}
+.white {color:#fff;margin-left:10px;line-height:5px;font-weight:bold;}
+.response {color:#eabd6c}
+.console {height: 300px;
+overflow: scroll;}
+#input {overflow: scroll;}
+#clever {width: 90%;
+margin-left: 2%;
+padding-bottom: 10px;
+padding-top: 10px;}
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+			</style>
+          
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script src="ai.js"></script>
+
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700,300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://unilogue.github.io/css/style.css">
-<script type="text/javascript" src="https://unilogue.github.io/js/jquery-1.11.3.min.js"></script>
+
+
 <script type="text/javascript" src="https://unilogue.github.io/js/cleverbot/cleverbot.io.js"></script>
 </head>
 	<body>
-		
-		<script>
-$(document).ready(function() {
+			<div class="header">Keybase : <a href="https://keybase.io/insomnia">8618 C77B E6DD D12E</a>
+				<br>
+				Discord : <a href="https://discord.me/ins0mnia">Insomnia Public Server</a> 
+				<br>
+				ICO : <a href="https://ico.ins0mnia.xyz">Coin:by Insomnia - value: $0.3</a>
+				<br>
+				Twitter : <a href="https://twitter.com/vafbzavn">@vafbzavn</a>
+				</div>
+					<div style="display:flex;justify-content:center;align-items:center;">
+							<div><a href="/" id="hide"><figure><img class="main" src="img/logo.png"></figure>
+							</a>
+						
+						
+						  </div>
+				</div>
+		<div class="holder">
+				<p>Chat with <span>Insomnia</span>, the Artificial Intelligence</p>
+			<div class="ai-talk">
+					<div class="console"><div id="input" style="display:none;"></div></div>
+					<input id="clever" type="text" placeholder="Have a chat with Insomnia AI." spellcheck="false" />
+					
+			</div>
+				
+		</div>
+	
+		<div class="footer"><div class="footercoppyright text-center">
+				<a href="#">INSOMNIA</a> <span class="bottom">© 2018. ALL RIGHTS RESERVED</span>
+	<div>
+	<a class="donate-with-crypto" href="https://commerce.coinbase.com/checkout/e03aa27c-9c06-46cd-8f32-cbb5e20e0584">
+	<span>Donate with Crypto</span></a>
+	
 
-var bot = new cleverbot("wpqRuy5AatSCD0Zi','O3nKgCEh1OyKar6uudJ9pM0cky4djkT3");
-
-
-
-bot.setNick("InS0Mnia")
-
-bot.create(function (err, session) {
-  // session is your session name, it will either be as you set it previously, or cleverbot.io will generate one for you
-
-  // Woo, you initialized cleverbot.io.  Insert further code here
-});
-
-$('#clever').keyup(function (e) {
-   if (e.keyCode == 13) {
-
-      var value = $(this).val();
-      var input = value;
-
-       if (value == input) {
-          document.getElementById("input").innerHTML =
-            bot.ask(input, function (err, response) {
-            console.log('me > ' + input);
-            console.log('cb > ' + response); // Will likely be: "Living in a lonely world"
-          });
-          $(this).val('');
-       }
-
-   }
-});
-
-$('html').keydown(function(e) {
- if (e.which == 118) {
-    window.open('/', '_self');
-}
-});
-
-if (typeof console  != "undefined")
-  if (typeof console.log != 'undefined')
-    console.olog = console.log;
-else
-  console.olog = function() {};
-
-console.log = function(message) {
-  console.olog(message);
-  $('.console').append('<br>' + '<p>' + message + '</p>');
-};
-console.error = console.debug = console.info =  console.log
-});
-
-		var bot = new cleverbot('wpqRuy5AatSCD0Zi','O3nKgCEh1OyKar6uudJ9pM0cky4djkT3');
-		if (annyang) {
-			var commands = {
-				'insomnia *command': function(command) {
-					bot.ask(command, function(err, response) {
-						if(err){
-							$('#johnny').text('Error!', err, 'Try again!');
-							console.error('error', err);
-						}
-						console.say(response);
-						$('#johnny').text(response);
-					});
-				}
-			};
-
-			annyang.addCommands(commands);
-			annyang.addCallback('error', function() {
-				console.log('error');
-				$('#johnny').text('Error! Error! Try again!');
-			});
-
-			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-				console.log(userSaid);
-				console.log(commandText);
-				console.log(phrases);
-			});
-			annyang.start();
-		}
-		</script>
-
-<div class="console"><div id="input" style="display:none;"></div></div>
-<p>me &#62;&nbsp;</p><input id="clever" type="text" placeholder="say something clever." spellcheck="false" />
+	
+	
+	
+	</div>				</div>
 
 
 	</body>
