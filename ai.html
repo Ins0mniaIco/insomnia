@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Svenni Dal's Speech-Bot</title>
+	</head>
+	<body>
+			<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+		<script src='/annyang.min.js'></script>
+		<script src='/cleverbot.io.min.js'></script>
+		<script src='/talking-console.js'></script>
+		<script>
+
+		var bot = new cleverbot('wpqRuy5AatSCD0Zi','O3nKgCEh1OyKar6uudJ9pM0cky4djkT3');
+		if (annyang) {
+			var commands = {
+				'johnny *command': function(command) {
+					bot.ask(command, function(err, response) {
+						if(err){
+							$('#johnny').text('Error!', err, 'Try again!');
+							console.error('error', err);
+						}
+						console.say(response);
+						$('#johnny').text(response);
+					});
+				}
+			};
+
+			annyang.addCommands(commands);
+			annyang.addCallback('error', function() {
+				console.log('error');
+				$('#johnny').text('Error! Error! Try again!');
+			});
+
+			annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+				console.log(userSaid);
+				console.log(commandText);
+				console.log(phrases);
+			});
+			annyang.start();
+		}
+		</script>
+		<h1>Svenni Dal's Speech-Bot.</h1>
+		<p>This project uses:</p>
+		<ul>
+			<li>
+				<a href='https://gist.github.com/sonictruth/7c2fea6d53818cbf92c24f81a722b9e2'>talking-console.js</a> from <a href='https://github.com/sonictruth'>sonictruth.</a>
+			</li>
+			<li>
+				<a href='https://github.com/TalAter/annyang'>annyang</a> from <a href='https://www.talater.com'>TalAter.</a>
+			</li>
+			<li>
+				<a href='https://cleverbot.io'>cleverbot</a> from <a href='https://cleverbot.io'>cleverbot.io</a>
+			</li>
+		</ul>
+		<p>Make sure to provide your own API user ID and API Key from cleverbot.io . Keep an console open because there are a lot of 400 errors for some reason.</p>
+		<hr>
+		<p>Say <strong>"Johnny, how are you?"</strong> and get an answer.</p>
+		<p>Commands are prefixed with "Johnny".</p>
+		<h2>Johnny says:</h2>
+		<p id='johnny'></p>
+	</body>
+</html>
+
