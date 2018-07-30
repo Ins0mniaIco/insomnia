@@ -1,6 +1,16 @@
 <!DOCTYPE html>
         <html lang="en" class="no-js">
             <head>
+				<script>
+					var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://api.github.com/repos/jimmywarting/diezyweb/contents/index.html?ref=gh-pages');
+xhr.setRequestHeader("Accept", "application/vnd.github.3.raw");
+xhr.send();
+
+xhr.onload = function(e){
+   alert(xhr.response)
+}
+					</script>
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
                 <title>Insomnia</title>
